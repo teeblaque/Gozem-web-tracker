@@ -10,11 +10,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getPackage(id: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/package/${id}`);
+  getPackageByPackageId(packageId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/package/${packageId}`);
   }
 
-  getDelivery(id: string): Observable<any> {
+  getDeliveryById(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/delivery/${id}`);
   }
 }

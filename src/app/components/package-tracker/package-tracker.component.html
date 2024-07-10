@@ -1,1 +1,34 @@
-<p>package-tracker works!</p>
+<div class="container">
+  <h2>Package Tracker</h2>
+  <form (ngSubmit)="trackPackage()">
+    <div>
+      <label>Enter Package ID:</label>
+      <input [(ngModel)]="packageId" name="packageId" required>
+      <button type="submit">Track</button>
+    </div>
+  </form>
+
+  <div *ngIf="package">
+    <h3>Package Details</h3>
+    <p>Package ID: {{ package.package_id }}</p>
+    <p>Description: {{ package.description }}</p>
+    <p>Weight: {{ package.weight }}g</p>
+    <p>Dimensions: {{ package.width }}cm x {{ package.height }}cm x {{ package.depth }}cm</p>
+    <p>From: {{ package.from_name }} ({{ package.from_address }})</p>
+    <p>To: {{ package.to_name }} ({{ package.to_address }})</p>
+  </div>
+
+  <div *ngIf="delivery && delivery.length > 0">
+    <h3>Delivery Details</h3>
+    <div *ngFor="let delivery of delivery">
+      <p>Delivery ID: {{ delivery.delivery_id }}</p>
+      <p>Status: {{ delivery.status }}</p>
+      <p>Current Location: Lat {{ delivery.location?.lat }}, Lng {{ delivery.location?.lng }}</p>
+    </div>
+  </div>
+
+  <div>
+    <h3>Map</h3>
+    <div #map style="height: 500px; width: 100%;"></div>
+  </div>
+</div>

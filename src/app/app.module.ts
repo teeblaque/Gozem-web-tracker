@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { PackageTrackerComponent } from './components/package-tracker/package-tracker.component';
 import { ApiService } from './services/api.service';
 import { SocketService } from './services/socket.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SocketService } from './services/socket.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [ApiService, SocketService],
   bootstrap: [AppComponent]
