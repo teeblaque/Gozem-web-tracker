@@ -8,27 +8,25 @@
     </div>
   </form>
 
-  <div *ngIf="package">
+  <div *ngIf="packageDetails">
     <h3>Package Details</h3>
-    <p>Package ID: {{ package.package_id }}</p>
-    <p>Description: {{ package.description }}</p>
-    <p>Weight: {{ package.weight }}g</p>
-    <p>Dimensions: {{ package.width }}cm x {{ package.height }}cm x {{ package.depth }}cm</p>
-    <p>From: {{ package.from_name }} ({{ package.from_address }})</p>
-    <p>To: {{ package.to_name }} ({{ package.to_address }})</p>
+    <p>Package ID: {{ packageDetails.package_id }}</p>
+    <p>Description: {{ packageDetails.description }}</p>
+    <p>Weight: {{ packageDetails.weight }}</p>
   </div>
 
-  <div *ngIf="delivery && delivery.length > 0">
+  <div *ngIf="deliveryDetails">
     <h3>Delivery Details</h3>
-    <div *ngFor="let delivery of delivery">
-      <p>Delivery ID: {{ delivery.delivery_id }}</p>
-      <p>Status: {{ delivery.status }}</p>
-      <p>Current Location: Lat {{ delivery.location?.lat }}, Lng {{ delivery.location?.lng }}</p>
-    </div>
+    <p>Delivery ID: {{ deliveryDetails.delivery_id }}</p>
+    <p>Status: {{ deliveryDetails.status }}</p>
+    <p>Source Location: {{ packageDetails.from_address }} - Lat {{ packageDetails.from_location?.lat }}, Lng {{ packageDetails.from_location?.lng }}</p>
+    <p>Destination Location: {{ packageDetails.to_address }} - Lat {{ packageDetails.to_location?.lat }}, Lng {{ packageDetails.to_location?.lng }}</p>
+    <p>Current Location: Lat {{ deliveryDetails.location?.lat }}, Lng {{ deliveryDetails.location?.lng }}</p>
   </div>
+
 
   <div>
-    <h3>Map</h3>
-    <div #map style="height: 500px; width: 100%;"></div>
+    <h3></h3>
+    <div id="map" style="height: 500px; width: 100%;"></div>
   </div>
 </div>
